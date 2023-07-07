@@ -14,3 +14,14 @@ function playRound(playerSelection, computerSelection) {
         playerScore++;
     }
 }
+
+function game(playRound) {
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt("What is your choice? (Rock, Paper, Scissors): ");
+        playerSelection.toLowerCase();
+        const computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection)
+        console.log(computerScore);
+        console.log(playerScore);
+    }
+}
