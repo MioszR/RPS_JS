@@ -4,6 +4,9 @@ function getComputerChoice() {
     return choice[random];
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
     } else if (playerSelection === "rock" && computerSelection === "paper" || 
@@ -24,4 +27,10 @@ function game(playRound) {
         console.log(computerScore);
         console.log(playerScore);
     }
+}
+console.log(game(playRound));
+if (playerScore > computerScore) {
+    console.log("You win everything!")
+} else {
+    console.log("You lost everything!")
 }
