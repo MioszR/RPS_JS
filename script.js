@@ -3,9 +3,13 @@ function getComputerChoice() {
     const random = Math.floor(Math.random() * choice.length);
     return choice[random];
 }
-
+let playerSelection = ''
 let playerScore = 0;
 let computerScore = 0;
+const computerSelection = getComputerChoice();
+rock = document.querySelector('.rock');
+paper = document.querySelector('.paper');
+scissors = document.querySelector('.scissors');
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -29,38 +33,40 @@ function playRound(playerSelection, computerSelection) {
 //    }
 //}
 
-const container = document.querySelector('#container');
-
-const rockButton = document.createElement('button');
-rockButton.classList.add('rockButton');
-rockButton.textContent = 'Rock';
-rockButton.addEventListener('click', () => {
+let rockButton = () => {
     playerSelection = "rock";
-    alert(playerSelection)
-})
-const scissorsButton = document.createElement('button');
-scissorsButton.classList.add('scissorsButton');
-scissorsButton.textContent = 'scissors';
-scissorsButton.addEventListener('click', () => {
+    console.log(playerSelection)
+}
+
+let paperButton = () => {
+    playerSelection = "paper";
+    console.log(playerSelection)
+}
+
+let scissorsButton = () => {
     playerSelection = "scissors";
-    alert(playerSelection)
-})
-const paperButton = document.createElement('button');
-paperButton.classList.add('paperButton');
-paperButton.textContent = 'Paper';
-paperButton.addEventListener('click', () => {
-    playerSelection = 'paper'
-    alert(playerSelection)
-})
-
-container.appendChild(rockButton);
-container.appendChild(paperButton);
-container.appendChild(scissorsButton);
+    console.log(playerSelection)
+}
 
 
 
-
-
+function game(playerSelection, computerSelection) {
+    for (let i = 0; i <=5; i++) {
+        if (rockButton.click()) {
+            playerSelection = 'rock'
+        } else if (paperButton.onclick()) {
+            playerSelection = 'paper'
+        } else if (scissorsButton.onclick()) {
+            playerSelection = 'scissors'
+        }
+        playRound(playerSelection, computerSelection);
+        console.log(computerSelection, playerSelection);
+        console.log(computerScore, playerScore);
+    }
+}
+rock.addEventListener("click", rockButton);
+paper.addEventListener("click", paperButton);
+scissors.addEventListener("click", scissorsButton);
 
 
 
