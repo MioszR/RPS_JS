@@ -3,15 +3,16 @@ function getComputerChoice() {
     const random = Math.floor(Math.random() * choice.length);
     return choice[random];
 }
-let playerSelection = ''
 let playerScore = 0;
 let computerScore = 0;
-const computerSelection = getComputerChoice();
 rock = document.querySelector('.rock');
 paper = document.querySelector('.paper');
 scissors = document.querySelector('.scissors');
+score = document.querySelector('#score');
 
-function playRound(playerSelection, computerSelection) {
+
+
+function compare(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
     } else if (playerSelection === "rock" && computerSelection === "paper" || 
     playerSelection === "paper" && computerSelection === "scissors" ||
@@ -35,38 +36,47 @@ function playRound(playerSelection, computerSelection) {
 
 let rockButton = () => {
     playerSelection = "rock";
+    const computerSelection = getComputerChoice();
+    compare(playerSelection, computerSelection);
+    score.textContent = `Computer: ${computerScore} Player: ${playerScore}`
+    console.log(computerSelection)
     console.log(playerSelection)
+    console.log('Computer: ' + computerScore, 'Player: ' + playerScore)
 }
 
 let paperButton = () => {
     playerSelection = "paper";
+    const computerSelection = getComputerChoice();
+    compare(playerSelection, computerSelection);
+    console.log(computerSelection)
     console.log(playerSelection)
+    console.log('Computer: ' + computerScore, 'Player: ' + playerScore)
 }
 
 let scissorsButton = () => {
     playerSelection = "scissors";
+    const computerSelection = getComputerChoice();
+    compare(playerSelection, computerSelection)
+    console.log(computerSelection)
     console.log(playerSelection)
+    console.log('Computer: ' + computerScore, 'Player: ' + playerScore)
 }
 
 
 
-function game(playerSelection, computerSelection) {
-    for (let i = 0; i <=5; i++) {
-        if (rockButton.click()) {
-            playerSelection = 'rock'
-        } else if (paperButton.onclick()) {
-            playerSelection = 'paper'
-        } else if (scissorsButton.onclick()) {
-            playerSelection = 'scissors'
+function game() {
+        rock.addEventListener("click", rockButton);
+        paper.addEventListener("click", paperButton);
+        scissors.addEventListener("click", scissorsButton);
+        if (playerScore === 5 && playerScore > computerScore) {
+            return console.log("You win!")
+        } else if (playerScore < computerScore && computerScore === 5) {
+            return console.log("You lose!")
         }
-        playRound(playerSelection, computerSelection);
-        console.log(computerSelection, playerSelection);
-        console.log(computerScore, playerScore);
-    }
 }
-rock.addEventListener("click", rockButton);
-paper.addEventListener("click", paperButton);
-scissors.addEventListener("click", scissorsButton);
+game()
+
+
 
 
 
