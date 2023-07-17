@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            body {
-                background-color: #000;
-            }
-            #score {
-                color: #fff;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div id="score">Computer: 0 Player: 0</div>
         <div id="buttons">
-            <button class="rock">Rock</button>
-            <button class="paper">Paper</button>
-            <button class="scissors">Scissors</button>
+            <button class="rock choice">&#9994</button>
+            <button class="paper choice">&#9995</button>
+            <button class="scissors choice">&#9996</button>
+            <!-- <p class="rock">&#9994</p>
+            <p class="paper">&#9995</p>
+            <p class="scissors">&#9996</p> -->
+        </div>
+        <div id="winner">The winner will be show here.</div>
+        <div id="down-section">
+            <button class="reset">Reset</button>
         </div>
         <script src="script.js"></script>
     </body>
