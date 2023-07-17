@@ -3,81 +3,78 @@ function getComputerChoice() {
     const random = Math.floor(Math.random() * choice.length);
     return choice[random];
 }
+
+
 let playerScore = 0;
 let computerScore = 0;
-rock = document.querySelector('.rock');
-paper = document.querySelector('.paper');
-scissors = document.querySelector('.scissors');
-score = document.querySelector('#score');
-
-
-
-function compare(playerSelection, computerSelection) {
+let rock = document.querySelector('.rock');
+let paper = document.querySelector('.paper');
+let scissors = document.querySelector('.scissors');
+let score = document.querySelector('#score');
+let roundWinner = document.querySelector('#winner');
+let reset = document.querySelector('.reset');
+let compare = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
-    } else if (playerSelection === "rock" && computerSelection === "paper" || 
-    playerSelection === "paper" && computerSelection === "scissors" ||
-    playerSelection === "scissors" && computerSelection === "rock") {
-        computerScore++;
+        return tie();
+    } else if (playerSelection === 'rock' && computerSelection === 'paper' ||
+    playerSelection === 'paper' && computerSelection === 'scissors' ||
+    playerSelection === 'scissors' && computerSelection === 'rock') {
+        return win();
+        
     } else {
-        playerScore++;
+        return lose();
     }
 }
 
-//function game(playRound) {
-//    for (let i = 0; i < 5; i++) {
-//        const playerSelection = prompt("What is your choice? (Rock, Paper, Scissors): ");
-//        playerSelection.toLowerCase();
-//        const computerSelection = getComputerChoice();
-//        playRound(playerSelection, computerSelection)
-//        console.log(computerScore);
-//        console.log(playerScore);
-//    }
-//}
+let tie = () => {
+    return winner.textContent = "We have tie, genntelman!"
+}
 
-let rockButton = () => {
-    playerSelection = "rock";
+let win = () => {
+    playerScore++;
+    return winner.textContent = "Oh yes! You win bro!"
+}
+
+let lose = () => {
+    computerScore++;
+    return winner.textContent = "Sorry man, you lose!"
+}
+
+let scoreBoard = (playerSelection) => {
     const computerSelection = getComputerChoice();
     compare(playerSelection, computerSelection);
-    score.textContent = `Computer: ${computerScore} Player: ${playerScore}`
-    console.log(computerSelection)
-    console.log(playerSelection)
-    console.log('Computer: ' + computerScore, 'Player: ' + playerScore)
+    score.textContent = `Computer: ${computerScore} Player: ${playerScore}` 
+}
+
+let rockButton = () => {
+    playerSelection = 'rock';
+    scoreBoard(playerSelection);
 }
 
 let paperButton = () => {
-    playerSelection = "paper";
-    const computerSelection = getComputerChoice();
-    compare(playerSelection, computerSelection);
-    console.log(computerSelection)
-    console.log(playerSelection)
-    console.log('Computer: ' + computerScore, 'Player: ' + playerScore)
+    playerSelection = 'paper';
+    scoreBoard(playerSelection);
 }
 
 let scissorsButton = () => {
-    playerSelection = "scissors";
-    const computerSelection = getComputerChoice();
-    compare(playerSelection, computerSelection)
-    console.log(computerSelection)
-    console.log(playerSelection)
-    console.log('Computer: ' + computerScore, 'Player: ' + playerScore)
+    playerSelection = 'scissors';
+    scoreBoard(playerSelection);
+}
+
+let resetButton = () => {
+    computerScore = 0;
+    playerScore = 0;
+    winner.textContent = 'The winner will be show here.';
+    score.textContent = `Computer: ${computerScore} Player: ${playerScore}`;
 }
 
 
 
-function game() {
-        rock.addEventListener("click", rockButton);
-        paper.addEventListener("click", paperButton);
-        scissors.addEventListener("click", scissorsButton);
-        if (playerScore === 5 && playerScore > computerScore) {
-            return console.log("You win!")
-        } else if (playerScore < computerScore && computerScore === 5) {
-            return console.log("You lose!")
-        }
+let main = () => {
+    rock.addEventListener('click', rockButton);
+    paper.addEventListener('click', paperButton);
+    scissors.addEventListener('click', scissorsButton);
+    reset.addEventListener('click', resetButton);
 }
-game()
 
-
-
-
-
-
+main();
