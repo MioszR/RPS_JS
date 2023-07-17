@@ -1,0 +1,49 @@
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+#score {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 120px;
+    flex: 1;
+}
+
+.choice {
+    padding: 30px 45px;
+    font-size: 150px;
+    background-color: #000;
+    border: solid white 6px;
+    border-radius: 30px;
+}
+
+#winner {
+    margin-top: 60px;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#down-section {
+    display: flex;
+    justify-content: center;
+}
+
+.reset {
+    background-color: #000;
+    font-size: 60px;
+    padding: 30px 60px;
+    color: #fff;
+    border: solid #fff 6px;
+    border-radius: 30px;
+    margin-top: 60px;
+}
+
